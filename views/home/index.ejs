@@ -6,14 +6,14 @@
             <div class="page-header text-center">
               <h1>Ntalk Example <br><small>Bem vindo!</small></h1>
             </div>
-            <form>
+            <form action="/entrar" method="POST">
             <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <label for="name">Your name</label>
+                <input type="text" class="form-control" id="name" name="usuario[nome]" placeholder="Digit your name">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <label for="email">Your email</label>
+                <input type="email" class="form-control" id="email" name="usuario[email]" placeholder="Digit your email">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Entrar</button>
