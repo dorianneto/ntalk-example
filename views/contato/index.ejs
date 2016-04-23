@@ -1,6 +1,55 @@
 <% include ../header %>
 
-	<h1>Bem vindo <%- usuario.nome %></h1>
+    <main class="container">
+        <div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	            <div class="page-header text-center">
+	              <h2>Bem vindo <%= usuario.nome %>!</h2>
+	              <a href="#" class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Meu perfil</a>
+	              <a href="/sair" class="btn btn-danger"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+	            </div>
+	            <div class="panel panel-default">
+	            	<div class="panel-heading">
+	            		Cadastro de contato
+	            	</div>
+	            	<div class="panel-body">
+			            <form action="/contatos" method="POST" class="form-inline text-center">
+				            <div class="form-group">
+				                <label for="name">Nome</label>
+				                <input type="text" class="form-control" id="name" name="contato[nome]" placeholder="Digite um nome">
+				            </div>
+				            <div class="form-group">
+				                <label for="email">Email</label>
+				                <input type="email" class="form-control" id="email" name="contato[email]" placeholder="Digite um email">
+				            </div>
+				            <button type="submit" class="btn btn-default"><i class="fa fa-plus-circle" aria-hidden="true"></i> Cadastrar</button>
+			            </form>
+	            	</div>
+	            </div>
+	        </div>
+	        <div class="col-md-12">
+	        	<table class="table table-hover">
+	        		<thead>
+	        			<tr>
+	        				<th>Nome</th>
+	        				<th>Email</th>
+	        				<th width="10%" class="text-center">Detalhes</th>
+	        			</tr>
+	        		</thead>
+	        		<tbody>
+	        			<% contatos.forEach(function(contato, index) { %>
+	        				<tr>
+		        				<td><%= contato.nome %></td>
+		        				<td><%= contato.email %></td>
+		        				<td width="10%" class="text-center">
+		        					<a href="/contatos/<%= index %>" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+		        				</td>
+	        				</tr>
+	        			<% }); %>
+	        		</tbody>
+	        	</table>
+	        </div>
+        </div>
+    </main>
 
-<% include ../exit %>
 <% include ../footer %>
