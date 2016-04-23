@@ -49,7 +49,7 @@ module.exports = function(app) {
 			// Atualiza registro
 			usuario.contatos[id] = contato;
 
-			res.render('contato/index');
+			res.redirect('/contatos');
 		},
 		destroy: function(req, res) {
 			var id = req.params.id
@@ -57,7 +57,7 @@ module.exports = function(app) {
 
 			usuario.contatos.splice(id, 1);
 
-			res.render('contato/index');
+			res.redirect('/contatos');
 		}
 	};
 
