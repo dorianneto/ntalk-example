@@ -1,0 +1,37 @@
+<% include ../header %>
+
+    <main class="container">
+        <div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	            <div class="page-header text-center">
+	              <h2>Agenda de contatos</h2>
+	              <a href="/contatos" class="btn btn-default"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+	              <a href="#" class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Meu perfil</a>
+	              <a href="/sair" class="btn btn-danger"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+	            </div>
+	            <div class="panel panel-default">
+	            	<div class="panel-heading clearfix">
+	            		Informações do contato
+	            		<a href="/contatos" class="btn btn-default pull-right"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Voltar</a>
+	            	</div>
+	            	<div class="panel-body">
+			            <form action="/contatos/<%= id %>" method="POST">
+			            	<input type="hidden" name="_method" value="delete">
+				            <div class="form-group">
+				                <label for="name">Nome</label>
+				                <input type="text" class="form-control" id="name" name="contato[nome]" placeholder="Digite um nome" value="<%= contato.nome %>">
+				            </div>
+				            <div class="form-group">
+				                <label for="email">Email</label>
+				                <input type="email" class="form-control" id="email" name="contato[email]" placeholder="Digite um email" value="<%= contato.email %>">
+				            </div>
+				            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Excluir</button>
+				            <a href="/contatos/<%= id %>/editar" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+			            </form>
+	            	</div>
+	            </div>
+	        </div>
+        </div>
+    </main>
+
+<% include ../footer %>
