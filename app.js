@@ -4,6 +4,7 @@ var express      	 = require('express')
 	, session        = require('express-session')
 	, bodyParser     = require('body-parser')
 	, methodOverride = require('method-override')
+	, error 		 = require('./middleware/error')
 	, app            = express();
 
 // Configurações
@@ -22,12 +23,10 @@ load('models')
 	.into(app);
 
 // more middleware (executes after routes)
-app.use(function(req, res, next) {});
+app.use(error.notFound);
 
 // error handling middleware
-app.use(function(err, req, res, next) {
-	console.log(err);
-});
+app.use(error.serverError);
 
 app.listen(3000, function() {
   console.log('Ntalk Example online!');
