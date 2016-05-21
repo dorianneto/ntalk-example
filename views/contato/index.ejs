@@ -33,7 +33,8 @@
 	        			<tr>
 	        				<th>Nome</th>
 	        				<th>Email</th>
-	        				<th width="10%" class="text-center">Detalhes</th>
+	        				<th width="5%" class="text-center">Detalhes</th>
+	        				<th width="5%" class="text-center">Conversar</th>
 	        			</tr>
 	        		</thead>
 	        		<tbody>
@@ -41,8 +42,11 @@
 	        				<tr>
 		        				<td><%= contato.nome %></td>
 		        				<td><%= contato.email %></td>
-		        				<td width="10%" class="text-center">
+		        				<td width="5%" class="text-center">
 		        					<a href="/contatos/<%= index %>" class="btn btn-info"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+		        				</td>
+		        				<td width="5%" class="text-center">
+		        					<a href="/chat/<%- contato.email %>" class="btn btn-primary"><i class="fa fa-bullhorn" aria-hidden="true"></i></a>
 		        				</td>
 	        				</tr>
 	        			<% }); %>

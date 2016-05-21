@@ -1,0 +1,37 @@
+<% include ../header %>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io.connect('http://localhost:3000');
+
+		socket.on('send-client', function(msg) {
+			document.getElementById('chat').innerHTML += msg;
+		});
+
+		var enviar = function() {
+			var nome = document.getElementById('nome').value;
+			var msg = document.getElementById('msg').value;
+			socket.emit('send-server', {nome: nome, msg: msg});
+		};
+	</script>
+
+    <main class="container">
+        <div class="row">
+	        <div class="col-md-12">
+	        	<br><br><br>
+				<div class="panel panel-default">
+					<div class="panel-heading clearfix">
+						<i class="fa fa-comments" aria-hidden="true"></i> Sala de chat
+						<div class="pull-right"><i class="fa fa-circle" aria-hidden="true"></i> Ativo</div>
+					</div>
+					<div class="panel-body" id="chat"></div>
+					<div class="panel-footer form-inline">
+						<input type="hidden" id="nome" value="<%- usuario.nome %>">
+						<input type="text" class="form-control" id="msg" placeholder="Digite sua mensagem">
+						<button class="btn btn-success" onclick="enviar();"><i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar</button>
+						<a href="/contatos" class="btn btn-default"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair da sala</a>
+					</div>
+				</div>
+	        </div>
+        </div>
+    </main>
+<% include ../footer %>
